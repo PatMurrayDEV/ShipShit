@@ -1,2 +1,77 @@
-# ShipShit
-Remind yourself to come back to the hacks you shipped
+# 🚀💩
+### Remind yourself to come back to the hacks you shipped
+
+When you add a hack to a project that you need to return to, add 🚀💩 to the commit message. Then an issue will be automatically created to remind you to come back and fix the hack. 
+
+```
+git commit -m "🚀💩"
+```
+
+#### *This is still super early, and doesn't work. Maybe check back later* 🤗
+
+***********
+
+
+
+## Set up
+
+[To Come]
+
+## Usage
+
+Usage is simple enough. Just include the string 🚀💩 in any commit message and you'll get a GitHub issue created to remind you to fix it later. 
+
+```
+git commit -m "🚀💩"
+```
+```
+git commit -m "🚀💩: created a UISearchController that works, but is a total hack"
+```
+```
+git commit -m "things are less shitty than before - 🚀💩"
+```
+```
+git commit -m "i really 🚀💩 on this one"
+```
+
+
+#### Alternatives?
+Don't support emoji? You can use the phrase `shipshit` (case insensitive) as an alternative.
+
+```
+git commit -m "shipshit"
+```
+```
+git commit -m "shipshit: created a UISearchController that works, but is a total hack"
+```
+```
+git commit -m "things are less shitty than before - shipshit"
+```
+```
+git commit -m "i really shipshit on this one"
+```
+*(See, not as fun as the emoji)*
+
+## Variables 
+
+[To Come]
+
+## License
+
+MIT, see LICENSE file. *(If this is a bad choice of license, tell me… I have no idea 😝)*
+
+
+
+## Credits
+
+- Pat Murray — [@_patmurray](https://twitter.com/_patmurray)
+- Mitch Busby — [@busbub](https://twitter.com/busbub)
+
+
+
+
+
+
+
+
+
