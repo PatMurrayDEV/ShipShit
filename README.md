@@ -1,4 +1,10 @@
-# 🚀💩
+
+<h3 align="center">
+  <img src="shpishit-icon.png" alt="🚀💩  Logo" />
+</h3>
+[![Twitter: @_patmurray](https://img.shields.io/badge/contact-@_patmurray-blue.svg?style=flat)](https://twitter.com/_patmurray)
+
+
 ### Remind yourself to come back to the hacks you shipped
 
 When you add a hack to a project that you need to return to, add 🚀💩 to the commit message. Then an issue will be automatically created to remind you to come back and fix the hack. 
