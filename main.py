@@ -8,6 +8,12 @@ cache = SimpleCache()
 
 from webhook_utils import valid_origin
 
+
+import os
+
+port = int(os.environ.get('PORT', 5000))
+
+
 # Creates an instance of the flask server using *this* module as its unique identifier
 app = Flask(__name__)
 
@@ -45,4 +51,4 @@ def past_webhook():
 
 # Ridiculously simplistic running mechanism
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=5000)
+	app.run(host='0.0.0.0', port=port)
