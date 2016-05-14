@@ -18,6 +18,7 @@ class GithubClient:
 			"title": title,
 			"body": body,
 		}
+		print request_url
 		r = requests.post(request_url, 
 			auth=(self.username, self.password),
 			json=request_payload
