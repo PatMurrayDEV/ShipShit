@@ -58,6 +58,9 @@ def webhook_receipt():
 				)
 			if not response:
 				abort(500)
+			return """
+				%s
+			""" % (response)
 	
 
 	return 'SUCCESS'

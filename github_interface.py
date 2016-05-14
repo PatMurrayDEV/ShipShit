@@ -22,5 +22,5 @@ class GithubClient:
 			auth=(self.username, self.password),
 			json=request_payload
 		)
-		return True
+		return r.json()
 
