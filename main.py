@@ -45,18 +45,20 @@ def webhook_receipt():
 	#You can use this handy method inside the request to get the POSTed JSON
 	webhook_payload = request.get_json()
 
+	cache.set('webhook_payload', webhook_payload)
+
 	for commit in webhook_payload["commits"]:
 		if u'🚀💩' in commit["message"] or "shipshit" in commit["message"].lower():
 			#Create a new issue
 			client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
 			response = client.create_issue('New shipshit issue', 
 				'This is an automatically created shipshit issue',
-				webhook_payload["repository"]["owner"]["login"],
-				webhook_payload["repository"]["full_name"],
+				webhook_payload["repository"]["owner"]["name"],
+				webhook_payload["repository"]["name"],
 				)
 			if not response:
 				abort(500)
-	cache.set('webhook_payload', webhook_payload)
+	
 
 	return 'SUCCESS'
 
