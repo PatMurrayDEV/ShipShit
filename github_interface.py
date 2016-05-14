@@ -11,7 +11,7 @@ class GithubClient:
 		self.username = username
 		self.password = password
 		self.baseurl = baseurl
-	def create_issue(self, title, owner, repo, body):
+	def create_issue(self, title, body, owner, repo):
 		#TODO: confirm enterprise github support
 		request_url = '%s/repos/%s/%s/issues' % (self.baseurl, owner, repo)
 		request_payload = {
