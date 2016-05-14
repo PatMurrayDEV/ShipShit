@@ -45,4 +45,4 @@ def past_webhook():
 
 # Ridiculously simplistic running mechanism
 if __name__ == "__main__":
-	app.run()
+	app.run(host='0.0.0.0', port=5000)
