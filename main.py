@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # Imports the Flask wrapper, abort function and request context
 from flask import Flask, abort, request
 
@@ -9,6 +12,7 @@ cache = SimpleCache()
 #Import some helper functions
 from webhook_utils import valid_origin
 import settings
+from github_interface import GithubClient
 
 # Creates an instance of the flask server using *this* module as its unique identifier
 app = Flask(__name__)
@@ -27,15 +31,30 @@ def webhook_receipt():
 	if request.method == 'GET':
 		return ''
 
-	if request.method == 'POST':
-		#This is actually a valid webhook, so process it!
+	if request.method != 'POST':
+		abort(405)
 
-		#You can use this handy method inside the request to get the POSTed JSON
-		webhook_data = request.get_json()
+	#This is actually a valid webhook, so process it!
 
-		cache.set('webhook_data', webhook_data)
+	event_type = request.headers.get('X-GitHub-Event')
 
-		return 'SUCCESS'
+	if event_type != "push":
+		#We only support push events!
+		abort(501)
+
+	#You can use this handy method inside the request to get the POSTed JSON
+	webhook_payload = request.get_json()
+
+	for commit in webhook_data["commits"]:
+		if "🚀💩" in commit["message"] or "shipshit" in commit["message"].lower():
+			#Create a new issue
+			client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
+			response = client.create_issue('New shipshit issue', 'This is an automatically created shipshit issue')
+			if not response:
+				abort(500)
+	cache.set('webhook_payload', webhook_payload)
+
+	return 'SUCCESS'
 
 
 @app.route("/past-webhook")
@@ -43,7 +62,7 @@ def past_webhook():
 	#This is a really naive implementation of getting and displaying a past webhook's data
 	return """
 	%s
-	"""  % cache.get('webhook_data')
+	"""  % cache.get('webhook_payload')
 
 # Ridiculously simplistic running mechanism
 if __name__ == "__main__":
