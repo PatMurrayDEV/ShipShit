@@ -46,7 +46,7 @@ def webhook_receipt():
 	webhook_payload = request.get_json()
 
 	for commit in webhook_payload["commits"]:
-		if "🚀💩" in commit["message"] or "shipshit" in commit["message"].lower():
+		if "🚀💩".encode('utf-8') in commit["message"] or "shipshit" in commit["message"].lower():
 			#Create a new issue
 			client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
 			response = client.create_issue('New shipshit issue', 'This is an automatically created shipshit issue')
