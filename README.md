@@ -40,6 +40,19 @@ git commit -m "things are less shitty than before - 🚀💩"
 git commit -m "i really 🚀💩 on this one"
 ```
 
+## Development
+
+To develop, install the dependency packages through pip:
+
+`pip install -r requirements.txt`
+
+Then run main.py
+
+To add new dependencies, just update the requirements.txt using
+
+`pip freeze > requirements.txt`
+
+Note: this is obviously oversimplified. Be prudent when adding new dependencies.
 
 #### Alternatives?
 Don't support emoji? You can use the phrase `shipshit` (case insensitive) as an alternative.
