@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import requests
+
 #We will create our own GitHub interface because existing libraries 
 #don't support what we want.
 
