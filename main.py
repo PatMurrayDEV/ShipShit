@@ -6,13 +6,9 @@ from werkzeug.contrib.cache import SimpleCache
 #Create a little persistent cache object, just for example's sake
 cache = SimpleCache()
 
+#Import some helper functions
 from webhook_utils import valid_origin
-
-
-import os
-
-port = int(os.environ.get('PORT', 5000))
-
+import settings
 
 # Creates an instance of the flask server using *this* module as its unique identifier
 app = Flask(__name__)
@@ -51,4 +47,4 @@ def past_webhook():
 
 # Ridiculously simplistic running mechanism
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=port, debug=True)
+	app.run(host='0.0.0.0', port=settings.PORT, debug=settings.DEBUG_ON)
