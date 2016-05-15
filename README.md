@@ -3,6 +3,7 @@
   <img src="shpishit-icon.png" alt="🚀💩  Logo" />
 </h3>
 [![Twitter: @_patmurray](https://img.shields.io/badge/contact-@_patmurray-blue.svg?style=flat)](https://twitter.com/_patmurray)
+[![Twitter: @busbub](https://img.shields.io/badge/contact-@busbub-blue.svg?style=flat)](https://twitter.com/busbub)
 
 
 ### Remind yourself to come back to the hacks you shipped
