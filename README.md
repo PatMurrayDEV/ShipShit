@@ -21,7 +21,10 @@ git commit -m "🚀💩"
 
 ## Set up
 
-[To Come]
+**Easiest**: Deploy directly to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PatMurrayDEV/ShipShit/tree/heroku)
+
 
 ## Usage
 
