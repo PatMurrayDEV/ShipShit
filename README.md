@@ -14,7 +14,7 @@ When you add a hack to a project that you need to return to, add 🚀💩 to the
 git commit -m "🚀💩"
 ```
 
-#### *This is still super early, and doesn't work. Maybe check back later* 🤗
+#### *This is still super early, and doesn't work (well -- it does in fact work now!). Maybe check back later* 🤗
 
 ***********
 
