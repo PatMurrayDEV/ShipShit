@@ -49,8 +49,8 @@ def webhook_receipt():
 
 	for commit in webhook_payload["commits"]:
 		if u'🚀💩' in commit["message"] or "shipshit" in commit["message"].lower():
-			issue_title = u'🚀💩 Issue: ' + commit["message"] + '.'
-			issue_body = '\#\#\# This is an automatically created shipshit issue\nCommit by: ' + commit["author"] + '\nCommit message: ' + commit["message"] + '\nCommit URL: ' + commit["url"] + '\nCommit SHA: ' + commit["sha"] + u'\n\n\nThis is an automatically created 🚀💩 issue. For more info visit https://github.com/PatMurrayDEV/ShipShit' 
+			issue_title = commit["message"]
+			issue_body = 'This is an automatically created shipshit issue. Commit by: ' + commit["author"] + '. Commit message: ' + commit["message"] + '. Commit URL: ' + commit["url"] + '. Commit SHA: ' + commit["sha"] + u'. This is an automatically created 🚀💩 issue. For more info visit https://github.com/PatMurrayDEV/ShipShit' 
             
             #Create a new issue
 			client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
