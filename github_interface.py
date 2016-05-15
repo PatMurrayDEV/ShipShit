@@ -11,12 +11,14 @@ class GithubClient:
 		self.username = username
 		self.password = password
 		self.baseurl = baseurl
-	def create_issue(self, title, body, owner, repo):
+	def create_issue(self, title, body, owner, repo, assignee):
 		#TODO: confirm enterprise github support
 		request_url = '%s/repos/%s/%s/issues' % (self.baseurl, owner, repo)
 		request_payload = {
 			"title": title,
 			"body": body,
+            "assignee": assignee,
+            "labels": ['shipshit']
 		}
 		print request_url
 		r = requests.post(request_url, 
