@@ -49,20 +49,19 @@ def webhook_receipt():
 
 	for commit in webhook_payload["commits"]:
 		if u'🚀💩' in commit["message"] or "shipshit" in commit["message"].lower():
-            #Check commit unique
-            if commit["distinct"] == true:
-                #Create a new issue
-                issue_title = u'🚀💩 Issue: ' + commit["message"]
-                issue_body = '### This is an automatically created shipshit issue\nCommit by: ' + commit["author"] + '\nCommit message: ' + commit["message"] + '\nCommit URL: ' + commit["url"] + '\nCommit SHA: ' + commit["sha"] + u'\n\n\nThis is an automatically created 🚀💩 issue. For more info visit https://github.com/PatMurrayDEV/ShipShit' 
-                client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
-                response = client.create_issue(issue_title, 
-                    issue_body,
-                    webhook_payload["repository"]["owner"]["name"],
-                    webhook_payload["repository"]["name"],
-                    commit["repository"]["author"]
-                    )
-                if not response:
-                    abort(500)
+            
+            #Create a new issue
+            issue_title = u'🚀💩 Issue: ' + commit["message"]
+            issue_body = '### This is an automatically created shipshit issue\nCommit by: ' + commit["author"] + '\nCommit message: ' + commit["message"] + '\nCommit URL: ' + commit["url"] + '\nCommit SHA: ' + commit["sha"] + u'\n\n\nThis is an automatically created 🚀💩 issue. For more info visit https://github.com/PatMurrayDEV/ShipShit' 
+            client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
+            response = client.create_issue(issue_title, 
+                issue_body,
+                webhook_payload["repository"]["owner"]["name"],
+                webhook_payload["repository"]["name"],
+                commit["repository"]["author"]
+                )
+            if not response:
+                abort(500)
 	return 'Successful push'
 
 
