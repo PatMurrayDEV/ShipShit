@@ -1,0 +1,19 @@
+{
+  "name": "ShipShit",
+  "description": "Remind yourself to come back to the hacks you shipped",
+  "repository": "https://github.com/PatMurrayDEV/ShipShit",
+  "logo": "https://raw.githubusercontent.com/PatMurrayDEV/ShipShit/master/shpishit-icon.png",
+  "keywords": ["python", "git"],
+  "env": {
+    "GITHUB_USERNAME": {
+      "description": "Your GitHub username",
+      "value": "USERNAME",
+      "required":true
+    },
+    "GITHUB_PASSWORD": {
+      "description": "Your GitHub password",
+      "value": "PASSWORD",
+      "required":true
+    }
+  }
+}
