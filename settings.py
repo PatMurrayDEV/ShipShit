@@ -7,6 +7,6 @@ PORT = int(os.environ.get('PORT', 5000))
 
 DEBUG_ON = bool(os.environ.get('DEBUG', False))
 
-GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', os.environ['GITHUB_USERNAME'])
+GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 
-GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', os.environ['GITHUB_PASSWORD'])
+GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', '')
