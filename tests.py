@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-
+import json
 import webhook_utils
 
 class TestWebhookMethods(unittest.TestCase):
@@ -27,6 +27,26 @@ class TestWebhookMethods(unittest.TestCase):
 		}
 		result = webhook_utils.commit_is_shipshit(sample_commit)
 		self.assertFalse(result)
+
+	def test_json_dump_should_not_raise_exception_emoji(self):
+		try:
+			sample_commit = {
+				"message": "this is  🚀💩"
+			}
+			result = webhook_utils.dict_to_string(sample_commit)
+		except Exception:
+			self.fail("stringifying should not have raised an exception!")
+
+	def test_hash_sample_payload(self):
+		sample_supplied_hash = "sha1=1cfa9f7b83c5cda3fcc5ae9f29b4e93b04aec251"
+		sample_payload = json.dumps(json.loads(file('sample_payload.json').read()))
+		print sample_payload
+		sample_key = 'youjustgotsnailedlol'
+		
+		computed_hash = webhook_utils.hash_payload_to_github(sample_payload, sample_key)
+
+		self.assertEqual(sample_supplied_hash, computed_hash)
+
 
 if __name__ == '__main__':
 	unittest.main()
