@@ -54,12 +54,7 @@ def webhook_receipt():
             
             #Create a new issue
 			client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
-			response = client.create_issue(issue_title, 
-										   issue_body,
-										   webhook_payload["repository"]["owner"]["name"],
-										   webhook_payload["repository"]["name"],
-										   commit["repository"]["author"]
-										  )
+			response = client.create_issue(issue_title, issue_body, webhook_payload["repository"]["owner"]["name"], webhook_payload["repository"]["name"])
 			if not response:
 				abort(500)
 	return 'Successful push'
