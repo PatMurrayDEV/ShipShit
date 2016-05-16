@@ -16,6 +16,8 @@ git commit -m "🚀💩"
 
 ## Set up
 
+Set up is super easy, I'm sure you could work it out. Otherwise here's some detailed steps if you need a hand. 
+
 #### Step 1: Get a Personal Access Token
 
 - Go to GitHub **Settings** → **Personal access tokens** [[Direct Link](https://github.com/settings/tokens/new)] 
