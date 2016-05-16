@@ -10,7 +10,7 @@ from werkzeug.contrib.cache import SimpleCache
 cache = SimpleCache()
 
 #Import some helper functions
-from webhook_utils import valid_origin
+from webhook_utils import valid_origin, commit_is_shipshit
 import settings
 from github_interface import GithubClient
 
@@ -48,11 +48,12 @@ def webhook_receipt():
 	cache.set('webhook_payload', webhook_payload)
 
 	for commit in webhook_payload["commits"]:
-		if u'🚀💩' in commit["message"] or "shipshit" in commit["message"].lower():
-			issue_title = u'🚀💩 Issue'
-			issue_body = 'This is an automatically created shipshit issue. Commit by: ' + commit["author"] + '. Commit message: ' + commit["message"] + '. Commit URL: ' + commit["url"] + '. Commit SHA: ' + commit["sha"] + u'. This is an automatically created 🚀💩 issue. For more info visit https://github.com/PatMurrayDEV/ShipShit' 
+
+		if commit_is_shipshit(commit):
+			#Create a new issue
             
-            #Create a new issue
+            issue_title = u'🚀💩 Issue'
+            issue_body = 'This is an automatically created shipshit issue. Commit by: ' + commit["author"] + '. Commit message: ' + commit["message"] + '. Commit URL: ' + commit["url"] + '. Commit SHA: ' + commit["sha"] + u'. This is an automatically created 🚀💩 issue. For more info visit https://github.com/PatMurrayDEV/ShipShit'
 			client = GithubClient(settings.GITHUB_USERNAME, settings.GITHUB_PASSWORD)
 			response = client.create_issue(issue_title, issue_body, webhook_payload["repository"]["owner"]["name"], webhook_payload["repository"]["name"])
 			if not response:
