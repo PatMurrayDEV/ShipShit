@@ -9,4 +9,4 @@ DEBUG_ON = bool(os.environ.get('DEBUG', False))
 
 GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', '')
 
-GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', '')
+GITHUB_PASSWORD = os.environ.get('GITHUB_TOKEN', '')

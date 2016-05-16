@@ -7,12 +7,10 @@
   "env": {
     "GITHUB_USERNAME": {
       "description": "Your GitHub username",
-      "value": "USERNAME",
       "required":true
     },
-    "GITHUB_PASSWORD": {
-      "description": "Your GitHub password",
-      "value": "PASSWORD",
+    "GITHUB_TOKEN": {
+      "description": "Your GitHub Personal Access Token (get from https://github.com/settings/tokens/new)",
       "required":true
     }
   }

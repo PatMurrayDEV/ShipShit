@@ -13,17 +13,51 @@ When you add a hack to a project that you need to return to, add 🚀💩 to the
 git commit -m "🚀💩"
 ```
 
-#### *This is still super early, and doesn't work. Maybe check back later* 🤗
-
-***********
-
-
 
 ## Set up
 
-**Easiest**: Deploy directly to Heroku
+#### Step 1: Get a Personal Access Token
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/PatMurrayDEV/ShipShit/tree/heroku)
+- Go to GitHub **Settings** → **Personal access tokens** [[Direct Link](https://github.com/settings/tokens/new)] 
+- Generate a new access token. 
+- Grant it 'repo' access.
+- Copy token to clipboard (this is the only chance you get to copy it!).
+
+#### Step 2: Deploy to Heroku
+
+Deploy directly to Heroku with the button below:
+
+<p align="center">
+  <a href="https://heroku.com/deploy?template=https://github.com/PatMurrayDEV/ShipShit/tree/heroku"><img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy" /></a>
+</p>
+
+
+Enter your Github username for `GITHUB_USERNAME` and personal access token for `GITHUB_TOKEN`. Your real password does work here, however that would be a very silly thing to put in there, you **should definitely use a personal access token**. 
+
+#### Step 3: Set up Webhook
+
+- Go to the Settings for your repo  
+  (unfortunately you need to do this for each repo, for organisations you can set this for all repos in the Organisation settings).
+- Go to **Webhooks & Services**
+- Select **Add Webhook**
+- For **Payload URL** enter your Heroku instance's URL with the path `/webhook`  
+  (e.g., `https://secret-river-38446.herokuapp.com/webhook`)
+- For **Which events would you like to trigger this webhook?**, select **Send me everything.**
+- Select Add Webhook
+
+#### Step 4: Test Webhook
+
+When you created the webhook GitHub will test it by firing a test POST at the endpoint. In the webhooks page in GitHub it should be returning `200 OK` from your ShipShit instance. 
+
+Now visit your Heroku instance in a webbrowser (e.g., `https://secret-river-38446.herokuapp.com/`) and you should see a test webhook successful message. This will only stay there until Heroku sleeps the server, so I reccommend you check it within half an hour (the sleep time on free Heroku instances). 
+
+
+#### Step 5: Commit some 💩
+
+Follow the usage guide below and enjoy keeping track of your hacks!
+
+
+[For customisaton instruction see below]
 
 
 ## Usage

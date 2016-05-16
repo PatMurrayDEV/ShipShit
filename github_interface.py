@@ -17,8 +17,7 @@ class GithubClient:
 		request_payload = {
 			"title": title,
 			"body": body,
-            "assignee": assignee,
-            "labels": ['shipshit']
+            "assignee": assignee
 		}
 		print request_url
 		r = requests.post(request_url, 
@@ -27,3 +26,6 @@ class GithubClient:
 		)
 		return r.json()
 
+
+    # Tried to add tags, not sure why it isn't working
+    
