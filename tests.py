@@ -39,8 +39,7 @@ class TestWebhookMethods(unittest.TestCase):
 
 	def test_hash_sample_payload(self):
 		sample_supplied_hash = "sha1=1cfa9f7b83c5cda3fcc5ae9f29b4e93b04aec251"
-		sample_payload = json.dumps(json.loads(file('sample_payload.json').read()))
-		print sample_payload
+		sample_payload = file('sample_payload.json').read()
 		sample_key = 'youjustgotsnailedlol'
 		
 		computed_hash = webhook_utils.hash_payload_to_github(sample_payload, sample_key)

@@ -16,7 +16,7 @@ def valid_origin(payload, supplied_hash, key):
 
 def hash_payload_to_github(payload_as_string, key):
 	#return hmac.new(payload_as_string, key, hashlib.sha1).hexdigest()
-	return "sha1="+hmac.new(str(key), msg=payload_as_string, digestmod=hashlib.sha1).hexdigest()
+	return "sha1="+hmac.new(bytes(key), msg=payload_as_string, digestmod=hashlib.sha1).hexdigest()
 
 def dict_to_string(di):
 	return json.dumps(di)
