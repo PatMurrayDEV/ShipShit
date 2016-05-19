@@ -11,8 +11,7 @@ def valid_origin(payload, supplied_hash, key):
 		return True
 	
 	computed_hash = hash_payload_to_github(payload, key)
-
-	return hmac.compare_digest(supplied_hash, computed_hash)
+	return hmac.compare_digest(str(supplied_hash), str(computed_hash))
 
 def hash_payload_to_github(payload_as_string, key):
 	#return hmac.new(payload_as_string, key, hashlib.sha1).hexdigest()
