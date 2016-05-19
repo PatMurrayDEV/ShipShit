@@ -7,12 +7,10 @@ import hashlib
 
 def valid_origin(payload, supplied_hash, key):
 	#TODO: validate webhook sender as noted in: https://sendgrid.com/blog/whats-webhook/#securingawebhook
-	
-	payload_as_string = dict_to_string(payload)
 
-	computed_hash = hash_payload_to_github(payload_as_string, key)
+	computed_hash = hash_payload_to_github(payload, key)
 
-	return hmac.compare_digest(hashed_payload, computed_hash)
+	return hmac.compare_digest(supplied_hash, computed_hash)
 
 def hash_payload_to_github(payload_as_string, key):
 	#return hmac.new(payload_as_string, key, hashlib.sha1).hexdigest()

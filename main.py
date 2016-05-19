@@ -43,7 +43,7 @@ def webhook_receipt():
 	webhook_payload = request.get_json()
 
 
-	if not valid_origin(webhook_payload, request.headers.get('X-Hub-Signature'), settings.GITHUB_WEBHOOK_SECRET):
+	if not valid_origin(request.data, request.headers.get('X-Hub-Signature'), settings.GITHUB_WEBHOOK_SECRET):
 		abort(403)
 
 	cache.set('webhook_payload', webhook_payload)
