@@ -45,7 +45,20 @@ class TestWebhookMethods(unittest.TestCase):
 		computed_hash = webhook_utils.hash_payload_to_github(sample_payload, sample_key)
 
 		self.assertEqual(sample_supplied_hash, computed_hash)
+	def test_hash_comparison(self):
+		sample_supplied_hash = "sha1=1cfa9f7b83c5cda3fcc5ae9f29b4e93b04aec251"
+		sample_payload = file('sample_payload.json').read()
+		sample_key = 'youjustgotsnailedlol'
+		is_valid = webhook_utils.valid_origin(sample_payload, sample_supplied_hash, sample_key)
 
+		self.assertTrue(is_valid)
 
+	def test_hash_comparison_fail(self):
+		sample_supplied_hash = "sha1=1cfa9f7b83c5cda3fcc5ae9f29b4e93b04aec253"
+		sample_payload = file('sample_payload.json').read()
+		sample_key = 'youjustgotsnailedlol'
+		should_not_be_valid = webhook_utils.valid_origin(sample_payload, sample_supplied_hash, sample_key)
+
+		self.assertFalse(should_not_be_valid)
 if __name__ == '__main__':
 	unittest.main()
