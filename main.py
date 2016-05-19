@@ -25,9 +25,6 @@ def home():
 @app.route("/webhook", methods=['GET', 'POST'])
 def webhook_receipt():
 
-	if not valid_origin():
-		abort(403)
-
 	if request.method == 'GET':
 		return ''
 
@@ -44,6 +41,10 @@ def webhook_receipt():
 
 	#You can use this handy method inside the request to get the POSTed JSON
 	webhook_payload = request.get_json()
+
+
+	if not valid_origin(request.data, request.headers.get('X-Hub-Signature'), settings.GITHUB_WEBHOOK_SECRET):
+		abort(403)
 
 	cache.set('webhook_payload', webhook_payload)
 
