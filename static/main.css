@@ -1,0 +1,21 @@
+body {
+	font-family: "Lato";
+}
+nav {
+	background-color: #675FBF;
+	color: white;
+	font-weight: 200;
+	height: 3em;
+}
+nav li {
+	display: inline-block;
+	line-height: 3em;
+	padding: 0 1em;
+}
+nav li:hover {
+	background-color: #8B82E4;
+}
+nav a {
+	color: white;
+	text-decoration: none;
+}
