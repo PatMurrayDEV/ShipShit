@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Imports the Flask wrapper, abort function and request context
-from flask import Flask, abort, request
+from flask import Flask, abort, request, render_template
 
 from werkzeug.contrib.cache import SimpleCache
 
@@ -15,12 +15,12 @@ import settings
 from github_interface import GithubClient
 
 # Creates an instance of the flask server using *this* module as its unique identifier
-app = Flask(__name__)
+app = Flask(__name__, template_folder='views')
 
 #This is a function decorator, it basically is a middleware that attaches the function hello to the flask gateway
 @app.route("/")
 def home():
-	return "Hello world"
+	return render_template('home.html')
 
 @app.route("/webhook", methods=['GET', 'POST'])
 def webhook_receipt():
@@ -72,4 +72,4 @@ def past_webhook():
 
 # Ridiculously simplistic running mechanism
 if __name__ == "__main__":
-	app.run(host='0.0.0.0', port=settings.PORT, debug=settings.DEBUG_ON)
+	app.run(host='0.0.0.0', port=settings.PORT, debug=True)
